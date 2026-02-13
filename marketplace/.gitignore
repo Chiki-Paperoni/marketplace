@@ -46,3 +46,7 @@ Thumbs.db
 test-output
 
 .angular
+
+# Next.js
+.next
+out

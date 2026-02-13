@@ -1,0 +1,10 @@
+{
+  "name": "frontend-nextjs-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/frontend-nextjs-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["frontend-nextjs"],
+  "// targets": "to see all targets run: nx show project frontend-nextjs-e2e --web",
+  "targets": {}
+}

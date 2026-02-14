@@ -1,22 +1,20 @@
 # Phase 2: Backend Development
 
-**Sprint Goal:** Build complete NestJS REST API with authentication, database, and Swagger docs
+**Phase objective:** Build complete NestJS REST API with authentication, database, and Swagger documentation.
 
 ---
 
 ## Epic 2.1: Database & Prisma Setup
 
-**Story Points:** 8
-
 **Tasks:**
 
-- [ ] **DB-1:** Set up PostgreSQL database (2 points)
+- [ ] **DB-1:** Set up PostgreSQL database
   - Create Neon.tech account
   - Create database instance
   - Get connection string
   - Add to .env file
 
-- [ ] **DB-2:** Initialize Prisma (2 points)
+- [ ] **DB-2:** Initialize Prisma
   ```bash
   cd apps/api
   npx prisma init
@@ -25,7 +23,7 @@
   - Set up database URL
   - Create initial schema
 
-- [ ] **DB-3:** Define database schema (3 points)
+- [ ] **DB-3:** Define database schema
   - Create User model with roles
   - Create Product model
   - Create Order model
@@ -33,7 +31,7 @@
   - Add relationships
   - Add indexes
 
-- [ ] **DB-4:** Run migrations and seed data (1 point)
+- [ ] **DB-4:** Run migrations and seed data
   ```bash
   npx prisma migrate dev --name init
   npx prisma db seed
@@ -52,36 +50,34 @@
 
 ## Epic 2.2: Authentication Module
 
-**Story Points:** 13
-
 **Tasks:**
 
-- [ ] **AUTH-1:** Set up Passport JWT (3 points)
+- [ ] **AUTH-1:** Set up Passport JWT
   - Install dependencies
   - Create auth module
   - Configure JWT strategy
   - Set up guards
 
-- [ ] **AUTH-2:** Implement registration endpoint (3 points)
+- [ ] **AUTH-2:** Implement registration endpoint
   - POST /auth/register
   - Validate input (email, password strength)
   - Hash password with bcrypt
   - Create user in database
   - Return JWT token
 
-- [ ] **AUTH-3:** Implement login endpoint (2 points)
+- [ ] **AUTH-3:** Implement login endpoint
   - POST /auth/login
   - Validate credentials
   - Return JWT token
   - Handle errors
 
-- [ ] **AUTH-4:** Implement password reset flow (3 points)
+- [ ] **AUTH-4:** Implement password reset flow
   - POST /auth/forgot-password (send email with token)
   - POST /auth/reset-password/:token
   - Validate reset token
   - Update password
 
-- [ ] **AUTH-5:** Add role-based guards (2 points)
+- [ ] **AUTH-5:** Add role-based guards
   - Create RolesGuard
   - Create decorators (@Roles, @Public)
   - Test with different roles
@@ -97,30 +93,28 @@
 
 ## Epic 2.3: Products Module
 
-**Story Points:** 13
-
 **Tasks:**
 
-- [ ] **PROD-1:** Create products module structure (2 points)
+- [ ] **PROD-1:** Create products module structure
   - Generate module, controller, service
   - Create DTOs (CreateProductDto, UpdateProductDto)
   - Add Swagger decorators
 
-- [ ] **PROD-2:** Implement CRUD endpoints (5 points)
+- [ ] **PROD-2:** Implement CRUD endpoints
   - GET /products (list with pagination, filters)
   - GET /products/:id (single product)
   - POST /products (create — vendor only)
   - PATCH /products/:id (update — vendor only)
   - DELETE /products/:id (delete — vendor only)
 
-- [ ] **PROD-3:** Add search and filtering (3 points)
+- [ ] **PROD-3:** Add search and filtering
   - Search by name/description
   - Filter by category
   - Filter by price range
   - Filter by vendor
   - Sort by price, date, rating
 
-- [ ] **PROD-4:** Add image upload (3 points)
+- [ ] **PROD-4:** Add image upload
   - Integrate Cloudinary
   - POST /products/:id/images
   - DELETE /products/:id/images/:imageId
@@ -137,16 +131,14 @@
 
 ## Epic 2.4: Orders Module
 
-**Story Points:** 13
-
 **Tasks:**
 
-- [ ] **ORDER-1:** Create orders module (2 points)
+- [ ] **ORDER-1:** Create orders module
   - Generate module, controller, service
   - Create DTOs
   - Add Swagger decorators
 
-- [ ] **ORDER-2:** Implement order creation (4 points)
+- [ ] **ORDER-2:** Implement order creation
   - POST /orders
   - Validate cart items
   - Check stock availability
@@ -155,19 +147,19 @@
   - Decrease product stock
   - Clear cart
 
-- [ ] **ORDER-3:** Implement order retrieval (3 points)
+- [ ] **ORDER-3:** Implement order retrieval
   - GET /orders (list user's orders)
   - GET /orders/:id (single order detail)
   - GET /vendor/orders (vendor's orders)
   - Add filters (status, date range)
 
-- [ ] **ORDER-4:** Implement order status updates (2 points)
+- [ ] **ORDER-4:** Implement order status updates
   - PATCH /orders/:id/status
   - Validate status transitions
   - Only vendor can update their orders
   - Send email notifications (optional)
 
-- [ ] **ORDER-5:** Add order cancellation (2 points)
+- [ ] **ORDER-5:** Add order cancellation
   - POST /orders/:id/cancel
   - Restore product stock
   - Update order status
@@ -183,27 +175,25 @@
 
 ## Epic 2.5: Additional Modules
 
-**Story Points:** 8
-
 **Tasks:**
 
-- [ ] **CART-1:** Implement cart module (3 points)
+- [ ] **CART-1:** Implement cart module
   - GET /cart (get current user's cart)
   - POST /cart/items (add item)
   - PATCH /cart/items/:id (update quantity)
   - DELETE /cart/items/:id (remove item)
 
-- [ ] **USER-1:** Implement users module (2 points)
+- [ ] **USER-1:** Implement users module
   - GET /users/profile (get current user)
   - PATCH /users/profile (update profile)
   - GET /users/:id (public profile)
 
-- [ ] **VENDOR-2:** Implement vendor module (2 points)
+- [ ] **VENDOR-2:** Implement vendor module
   - POST /vendors/apply (apply to become vendor)
   - GET /vendors/:id (public vendor profile)
   - PATCH /vendors/profile (update vendor profile)
 
-- [ ] **ADMIN-1:** Implement admin endpoints (1 point)
+- [ ] **ADMIN-1:** Implement admin endpoints
   - GET /admin/users (list all users)
   - PATCH /admin/vendors/:id/approve (approve vendor)
   - GET /admin/stats (platform statistics)
@@ -219,23 +209,21 @@
 
 ## Epic 2.6: Swagger & API Client Generation
 
-**Story Points:** 5
-
 **Tasks:**
 
-- [ ] **SWAGGER-1:** Configure Swagger (2 points)
+- [ ] **SWAGGER-1:** Configure Swagger
   - Set up SwaggerModule in main.ts
   - Add API metadata (title, description, version)
   - Configure bearer auth
   - Generate openapi.json on startup
 
-- [ ] **SWAGGER-2:** Add Swagger decorators to all endpoints (2 points)
+- [ ] **SWAGGER-2:** Add Swagger decorators to all endpoints
   - Add @ApiTags to controllers
   - Add @ApiOperation to methods
   - Add @ApiResponse with types
   - Add @ApiBearerAuth where needed
 
-- [ ] **GEN-1:** Set up Orval for API client generation (1 point)
+- [ ] **GEN-1:** Set up Orval for API client generation
   - Install Orval
   - Create orval.config.ts
   - Generate initial API client
@@ -266,4 +254,4 @@
 - Swagger docs are complete and accurate
 - API client generates without errors
 - Database migrations are clean
-- API is deployed and accessible (when you choose to deploy)
+- API deployable and documented (per Phase 5)

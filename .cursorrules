@@ -1,0 +1,203 @@
+# PROJECT: Marketplace Platform
+
+## Purpose
+Building a full-stack marketplace platform where users can buy and sell products. Users can have dual roles (buyer + seller). Focus on clean code, scalability, and excellent UX based on wireframe specifications.
+
+## Tech Stack
+- **Frontend**: [Next.js] [Angular]
+- **Backend**: [Nest.js]
+- **Database**: [PostgreSQL]
+- **Auth**: JWT or session-based
+- **Image Storage**: Cloudinary or AWS S3
+- **Payment**: Stripe
+- **AI Tools**: Cursor AI for development, Claude API for generating seed data
+
+## Development Approach
+- **Start with BACKEND first** - database schema and APIs before UI
+- Test APIs with Postman/Insomnia before building frontend
+- Once APIs are solid, build frontend against working endpoints
+- Use faker.js and randomuser.me API for realistic test data (see seed.js)
+- Use Claude API to generate realistic product descriptions and reviews
+
+## Core Features (Based on Wireframes)
+
+### Public Pages
+1. **Homepage**: Hero section, featured products grid, category cards, search bar
+2. **Product Listing**: Grid view with filters (category, price range, condition), sorting, pagination
+3. **Product Detail**: Large image gallery, price, description, seller info, reviews, "Add to Cart" / "Contact Seller"
+4. **Search Results**: Similar to listing page with search query highlighted
+
+### User Features
+5. **Shopping Cart**: Line items, quantity adjustment, subtotal, checkout button
+6. **Checkout Flow**: Multi-step (shipping → payment → review → confirmation)
+7. **User Dashboard**: 
+   - Buyer view: Orders, saved items, messages
+   - Seller view: My listings, sales, analytics, messages
+8. **Messaging**: Thread-based chat between buyers/sellers
+9. **Reviews/Ratings**: 5-star system, text reviews, helpfulness voting
+
+### Seller Features
+10. **Add/Edit Listing**: Multi-step form (details → images → pricing → preview)
+11. **Manage Listings**: CRUD operations, mark as sold, view stats
+12. **Order Management**: View orders, update status, shipping info
+
+### Admin Features
+13. **Admin Dashboard**: User management, product moderation, dispute resolution, platform analytics
+
+## Database Models (Key Entities)
+
+### Users
+- id, email, password_hash, name, avatar
+- role: ['buyer', 'seller', 'admin'] (can be multiple)
+- seller_rating, total_sales (for sellers)
+- created_at, last_active
+
+### Products
+- id, title, description, price, currency
+- category_id, condition (new/used/refurbished)
+- images[] (array of URLs)
+- seller_id (FK to Users)
+- quantity, status (active/sold/pending/draft)
+- views_count, favorites_count
+- created_at, updated_at
+
+### Categories
+- id, name, slug, parent_id (for subcategories)
+- icon/image
+
+### Orders
+- id, buyer_id (FK), order_number
+- items[] (product_id, quantity, price_snapshot)
+- total_amount, status (pending/paid/shipped/delivered/cancelled)
+- shipping_address, tracking_number
+- created_at, updated_at
+
+### Reviews
+- id, product_id (FK), reviewer_id (FK)
+- rating (1-5), comment, helpful_count
+- created_at
+
+### Messages
+- id, thread_id, sender_id (FK), receiver_id (FK)
+- content, is_read, product_id (optional context)
+- created_at
+
+### Favorites/Saved Items
+- user_id, product_id, created_at
+
+## API Structure
+Follow RESTful conventions:
+```
+POST   /api/auth/register
+POST   /api/auth/login
+GET    /api/products (with query params for filtering)
+GET    /api/products/:id
+POST   /api/products (seller only)
+PUT    /api/products/:id (seller only, own products)
+DELETE /api/products/:id (seller only, own products)
+GET    /api/categories
+POST   /api/orders
+GET    /api/orders/:id
+POST   /api/reviews
+GET    /api/messages/threads
+POST   /api/messages
+GET    /api/users/:id/profile
+```
+
+## Code Style Preferences
+- Use async/await, not raw promises
+- Functional components with hooks (React)
+- Descriptive variable names (getUserProducts not getUP)
+- Keep functions small (<50 lines ideally)
+- Comment complex business logic and matching algorithms
+- Proper error handling on ALL async operations
+- No console.log in production (use proper logging library)
+
+## Naming Conventions
+- **Files**: kebab-case (product-listing.js)
+- **Components**: PascalCase (ProductCard, CheckoutFlow)
+- **Functions/variables**: camelCase (fetchUserOrders, isLoggedIn)
+- **Database tables**: snake_case (user_profiles, order_items)
+- **API routes**: /api/v1/resource-name (plural for collections)
+- **Constants**: UPPER_SNAKE_CASE (MAX_UPLOAD_SIZE)
+
+## Security Requirements
+- Hash passwords with bcrypt (min 10 rounds)
+- Sanitize ALL user inputs (XSS prevention)
+- Validate all inputs server-side (never trust client)
+- Rate limiting on auth endpoints (5 attempts/15min)
+- CORS properly configured
+- Environment variables for ALL secrets (never hardcode)
+- SQL injection prevention (use parameterized queries/ORM)
+- Image upload validation (file type, size limits)
+- HTTPS only in production
+
+## Patterns to Follow
+- **Repository pattern** for database operations
+- **Middleware** for authentication checks
+- **Centralized error handling** (don't repeat try-catch everywhere)
+- **Input validation layer** (separate from business logic)
+- **Service layer** for business logic (keep controllers thin)
+- **Response standardization**: `{ success: bool, data: {}, error: {} }`
+
+## Testing Strategy
+- Unit tests for business logic (matching, pricing calculations)
+- Integration tests for API endpoints
+- Test critical flows: registration, checkout, order placement
+- Use faker.js seed script for test data generation
+- Mock external services (payment, image upload) in tests
+
+## Database Seeding (For Testing)
+Use the seed script approach discussed:
+```bash
+node seed.js --count=1000
+```
+- Faker.js for names, emails, dates, prices
+- randomuser.me API for profile photos
+- Claude API for realistic product descriptions and reviews
+- Unsplash API for product images
+- Weighted distributions (some sellers very active, most moderate)
+- Realistic timestamps (spread over past 6-12 months)
+
+## Image Handling
+- Max 5 images per product
+- Compress before upload
+- Generate thumbnails (150x150, 300x300, 800x800)
+- Store CDN URLs in database, not binary data
+- Validate file types (jpg, png, webp only)
+
+## Don't Do
+- ❌ Don't commit secrets, API keys, or .env files
+- ❌ Don't skip input validation on any endpoint
+- ❌ Don't expose internal error details to frontend users
+- ❌ Don't use console.log in production code
+- ❌ Don't build frontend before APIs are defined
+- ❌ Don't manually create test data (use seed scripts)
+- ❌ Don't allow unrestricted file uploads
+- ❌ Don't trust client-side validation alone
+
+## Current Phase
+Backend development - setting up database schema and core API endpoints
+
+## Immediate Next Steps
+1. Set up database schema and relationships
+2. Implement authentication system (register/login)
+3. Build product CRUD endpoints
+4. Test APIs thoroughly with Postman
+5. Create seed script for test data
+6. Then start frontend development
+
+## Performance Considerations
+- Index frequently queried fields (user_id, product status, created_at)
+- Paginate all list endpoints (20-50 items per page)
+- Lazy load images on frontend
+- Cache category lists and featured products
+- Optimize database queries (avoid N+1 problems)
+
+## Future Enhancements (Post-MVP)
+- Real-time notifications
+- Advanced search (Elasticsearch)
+- Wishlist sharing
+- Bulk listing upload for sellers
+- Analytics dashboard for sellers
+- Mobile app (React Native)

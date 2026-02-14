@@ -1,10 +1,10 @@
 # Multi-Vendor Marketplace — Documentation
 
 **Project codename:** Marketplace  
-**Type:** Full-stack e-commerce platform (pet project for self-growth)  
-**Architecture:** Monorepo with dual frontend (Angular + Next.js)
+**Type:** Full-stack multi-vendor e-commerce platform  
+**Architecture:** Monorepo with NestJS API and dual frontend (Angular + Next.js)
 
-This folder contains the project plan split into focused documents.
+This folder contains the product and technical specifications, organized by area.
 
 ---
 
@@ -26,7 +26,7 @@ This folder contains the project plan split into focused documents.
 | | [Phase 3: Angular frontend](development/phase-3-angular-frontend.md) | Angular SPA implementation |
 | | [Phase 4: Next.js frontend](development/phase-4-nextjs-frontend.md) | Next.js implementation |
 | | [Phase 5: Polish & deployment](development/phase-5-polish-and-deployment.md) | UX, performance, testing, deploy, docs |
-| | [Sprint metrics](development/sprint-metrics.md) | Story points, standup, review checklist |
+| | [Development scope](development/sprint-metrics.md) | Phase scope summary and review checklist |
 | **Design** | [Design system](design/design-system.md) | Colors, typography, spacing |
 | **Configuration** | [Environment variables](configuration/environment-variables.md) | Backend, Angular, Next.js env config |
 | **Testing** | [Testing strategy](testing/testing-strategy.md) | Backend, frontend, E2E |

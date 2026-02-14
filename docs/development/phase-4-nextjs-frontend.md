@@ -1,19 +1,17 @@
 # Phase 4: Next.js Frontend
 
-**Sprint Goal:** Replicate Angular functionality in Next.js, learning React patterns
+**Phase objective:** Deliver Next.js SPA with feature parity to the Angular frontend (customer, vendor, and admin).
 
 ---
 
 ## Epic 4.1: Next.js Core Setup
 
-**Story Points:** 8
-
 **Tasks:**
 
-- [ ] **NEXT-SETUP-1:** Configure app structure (2 points)
-- [ ] **NEXT-SETUP-2:** Set up React Query (2 points)
-- [ ] **NEXT-SETUP-3:** Set up Zustand (2 points)
-- [ ] **NEXT-SETUP-4:** Create shared components (2 points)
+- [ ] **NEXT-SETUP-1:** Configure app structure
+- [ ] **NEXT-SETUP-2:** Set up React Query
+- [ ] **NEXT-SETUP-3:** Set up Zustand
+- [ ] **NEXT-SETUP-4:** Create shared components
 
 **Acceptance Criteria:**
 
@@ -25,14 +23,12 @@
 
 ## Epic 4.2: Authentication (Client Components)
 
-**Story Points:** 8
-
 **Tasks:**
 
-- [ ] **NEXT-AUTH-1:** Build login page (2 points)
-- [ ] **NEXT-AUTH-2:** Build register page (3 points)
-- [ ] **NEXT-AUTH-3:** Build password reset (2 points)
-- [ ] **NEXT-AUTH-4:** Add auth middleware (1 point)
+- [ ] **NEXT-AUTH-1:** Build login page
+- [ ] **NEXT-AUTH-2:** Build register page
+- [ ] **NEXT-AUTH-3:** Build password reset
+- [ ] **NEXT-AUTH-4:** Add auth middleware
 
 **Acceptance Criteria:**
 
@@ -44,15 +40,13 @@
 
 ## Epic 4.3: Public Pages (Mix of Server & Client)
 
-**Story Points:** 13
-
 **Tasks:**
 
-- [ ] **NEXT-PUB-1:** Build homepage (Server Component) (3 points)
-- [ ] **NEXT-PUB-2:** Build product listing (Server Component) (4 points)
-- [ ] **NEXT-PUB-3:** Build product detail (Server Component) (3 points)
-- [ ] **NEXT-PUB-4:** Build search (Server Component) (2 points)
-- [ ] **NEXT-PUB-5:** Build vendor profile (Server Component) (1 point)
+- [ ] **NEXT-PUB-1:** Build homepage (Server Component)
+- [ ] **NEXT-PUB-2:** Build product listing (Server Component)
+- [ ] **NEXT-PUB-3:** Build product detail (Server Component)
+- [ ] **NEXT-PUB-4:** Build search (Server Component)
+- [ ] **NEXT-PUB-5:** Build vendor profile (Server Component)
 
 **Acceptance Criteria:**
 
@@ -65,15 +59,13 @@
 
 ## Epic 4.4: Cart & Checkout (Client Components)
 
-**Story Points:** 13
-
 **Tasks:**
 
-- [ ] **NEXT-CART-1:** Build cart page (3 points)
-- [ ] **NEXT-CART-2:** Cart state with React Query (2 points)
-- [ ] **NEXT-CHECKOUT-1:** Build checkout flow (5 points)
-- [ ] **NEXT-CHECKOUT-2:** Order confirmation (2 points)
-- [ ] **NEXT-CHECKOUT-3:** Address management (1 point)
+- [ ] **NEXT-CART-1:** Build cart page
+- [ ] **NEXT-CART-2:** Cart state with React Query
+- [ ] **NEXT-CHECKOUT-1:** Build checkout flow
+- [ ] **NEXT-CHECKOUT-2:** Order confirmation
+- [ ] **NEXT-CHECKOUT-3:** Address management
 
 **Acceptance Criteria:**
 
@@ -86,14 +78,12 @@
 
 ## Epic 4.5: Customer Dashboard (Client Components)
 
-**Story Points:** 8
-
 **Tasks:**
 
-- [ ] **NEXT-DASH-1:** Build dashboard layout (2 points)
-- [ ] **NEXT-DASH-2:** Orders section (3 points)
-- [ ] **NEXT-DASH-3:** Profile section (2 points)
-- [ ] **NEXT-DASH-4:** Addresses section (1 point)
+- [ ] **NEXT-DASH-1:** Build dashboard layout
+- [ ] **NEXT-DASH-2:** Orders section
+- [ ] **NEXT-DASH-3:** Profile section
+- [ ] **NEXT-DASH-4:** Addresses section
 
 **Acceptance Criteria:**
 
@@ -105,15 +95,13 @@
 
 ## Epic 4.6: Vendor Dashboard (Client Components)
 
-**Story Points:** 13
-
 **Tasks:**
 
-- [ ] **NEXT-VENDOR-1:** Vendor layout (2 points)
-- [ ] **NEXT-VENDOR-2:** Products management (5 points)
-- [ ] **NEXT-VENDOR-3:** Orders management (3 points)
-- [ ] **NEXT-VENDOR-4:** Analytics (2 points)
-- [ ] **NEXT-VENDOR-5:** Vendor profile (1 point)
+- [ ] **NEXT-VENDOR-1:** Vendor layout
+- [ ] **NEXT-VENDOR-2:** Products management
+- [ ] **NEXT-VENDOR-3:** Orders management
+- [ ] **NEXT-VENDOR-4:** Analytics
+- [ ] **NEXT-VENDOR-5:** Vendor profile
 
 **Acceptance Criteria:**
 
@@ -125,15 +113,13 @@
 
 ## Epic 4.7: Admin Panel (Client Components)
 
-**Story Points:** 8
-
 **Tasks:**
 
-- [ ] **NEXT-ADMIN-1:** Admin layout (1 point)
-- [ ] **NEXT-ADMIN-2:** Users management (3 points)
-- [ ] **NEXT-ADMIN-3:** Vendors management (2 points)
-- [ ] **NEXT-ADMIN-4:** Products overview (1 point)
-- [ ] **NEXT-ADMIN-5:** Analytics (1 point)
+- [ ] **NEXT-ADMIN-1:** Admin layout
+- [ ] **NEXT-ADMIN-2:** Users management
+- [ ] **NEXT-ADMIN-3:** Vendors management
+- [ ] **NEXT-ADMIN-4:** Products overview
+- [ ] **NEXT-ADMIN-5:** Analytics
 
 **Acceptance Criteria:**
 
@@ -158,4 +144,4 @@
 - Server Components used where appropriate
 - React Query caching works
 - Forms validated with zod
-- Deployed and accessible (when you choose to deploy)
+- Deployable and documented (per Phase 5)

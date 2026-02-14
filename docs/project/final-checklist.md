@@ -2,12 +2,11 @@
 
 Before considering the project complete:
 
-- [ ] All epics completed
-- [ ] All three apps deployed
+- [ ] All phase epics completed per acceptance criteria
+- [ ] All three applications deployed
 - [ ] Custom domains configured (optional)
-- [ ] README comprehensive
-- [ ] Demo video uploaded (optional)
-- [ ] Screenshots in README
-- [ ] GitHub repo public
-- [ ] Demo accounts created
-- [ ] Can explain architecture confidently
+- [ ] README comprehensive with setup and run instructions
+- [ ] Demo video or walkthrough (optional)
+- [ ] Screenshots or diagrams in README
+- [ ] Demo accounts created and documented
+- [ ] Architecture and technical decisions documented

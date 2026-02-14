@@ -12,10 +12,10 @@ A production-grade multi-vendor e-commerce marketplace that demonstrates modern 
 4. **Modern Tech Stack**: Latest versions of Angular 17+, Next.js 14+, NestJS
 5. **Professional Setup**: Nx monorepo, pnpm workspace, proper CI/CD ready
 
-## Learning Objectives
+## Technical Objectives
 
-- Master Next.js and React ecosystem
-- Understand differences between Angular and React approaches
-- Build scalable REST APIs with NestJS
-- Implement proper authentication and authorization
-- Create production-ready applications
+- Next.js and React patterns applied consistently in the Next.js frontend
+- Clear separation of concerns between Angular and Next.js implementations
+- Scalable REST API with NestJS (auth, products, orders, cart, admin)
+- Authentication and role-based authorization implemented end-to-end
+- Production-ready deployment and documentation

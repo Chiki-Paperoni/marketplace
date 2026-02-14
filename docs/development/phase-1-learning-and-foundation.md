@@ -1,35 +1,33 @@
 # Phase 1: Learning & Foundation
 
-**Sprint Goal:** Set up development environment, learn React/Next.js basics, initialize monorepo
+**Phase objective:** Set up development environment, establish React/Next.js foundation, and initialize monorepo.
 
 ---
 
 ## Epic 1.1: Learning React & Next.js
 
-**Story Points:** 13
-
 **Tasks:**
 
-- [ ] **LEARN-1:** Complete React official tutorial (3 points)
+- [ ] **LEARN-1:** Complete React official tutorial
   - Read "Learn React" docs
   - Build tic-tac-toe example
   - Understand JSX, components, props, state
   - Practice hooks: useState, useEffect
 
-- [ ] **LEARN-2:** Learn React ecosystem basics (3 points)
+- [ ] **LEARN-2:** Learn React ecosystem basics
   - Understand React vs Angular differences
   - Learn about virtual DOM
   - Study component lifecycle
   - Practice with 2-3 small components
 
-- [ ] **LEARN-3:** Complete Next.js tutorial (4 points)
+- [ ] **LEARN-3:** Complete Next.js tutorial
   - Read Next.js App Router docs
   - Understand Server vs Client Components
   - Learn about routing and navigation
   - Study data fetching patterns
   - Build sample blog app from tutorial
 
-- [ ] **LEARN-4:** Study NestJS basics (3 points)
+- [ ] **LEARN-4:** Study NestJS basics
   - Review NestJS documentation
   - Understand modules, controllers, services
   - Learn dependency injection
@@ -46,18 +44,16 @@
 
 ## Epic 1.2: Project Setup
 
-**Story Points:** 8
-
 **Tasks:**
 
-- [ ] **SETUP-1:** Initialize Nx workspace (2 points)
+- [ ] **SETUP-1:** Initialize Nx workspace
   ```bash
   npx create-nx-workspace@latest marketplace --preset=empty --packageManager=pnpm
   ```
   - Install Nx plugins
   - Configure pnpm workspace
 
-- [ ] **SETUP-2:** Create NestJS backend app (2 points)
+- [ ] **SETUP-2:** Create NestJS backend app
   ```bash
   pnpm nx g @nx/nest:app api
   ```
@@ -65,7 +61,7 @@
   - Configure environment variables
   - Set up ESLint and Prettier
 
-- [ ] **SETUP-3:** Create Angular frontend app (2 points)
+- [ ] **SETUP-3:** Create Angular frontend app
   ```bash
   pnpm nx g @nx/angular:app frontend-angular --style=css --routing --standalone
   ```
@@ -73,7 +69,7 @@
   - Set up basic routing
   - Configure environment files
 
-- [ ] **SETUP-4:** Create Next.js frontend app (2 points)
+- [ ] **SETUP-4:** Create Next.js frontend app
   ```bash
   pnpm nx g @nx/next:app frontend-nextjs --style=css --appDir
   ```
@@ -92,11 +88,9 @@
 
 ## Epic 1.3: Shared Libraries Setup
 
-**Story Points:** 5
-
 **Tasks:**
 
-- [ ] **LIB-1:** Create shared types library (2 points)
+- [ ] **LIB-1:** Create shared types library
   ```bash
   pnpm nx g @nx/js:lib shared/types --buildable
   ```
@@ -104,7 +98,7 @@
   - Export from index
   - Set up TypeScript paths
 
-- [ ] **LIB-2:** Create shared utils library (2 points)
+- [ ] **LIB-2:** Create shared utils library
   ```bash
   pnpm nx g @nx/js:lib shared/utils --buildable
   ```
@@ -112,7 +106,7 @@
   - Add price formatters
   - Add validation utilities
 
-- [ ] **LIB-3:** Create API client library structure (1 point)
+- [ ] **LIB-3:** Create API client library structure
   ```bash
   pnpm nx g @nx/js:lib api-client --buildable
   ```

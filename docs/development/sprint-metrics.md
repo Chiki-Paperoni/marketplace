@@ -1,26 +1,22 @@
-# Sprint Metrics & Velocity
+# Development Scope Overview
 
-## Story Points by Phase
+This document summarizes the scope of each development phase for planning and tracking.
 
-- **Phase 1 (Learning & Foundation):** 26 points
-- **Phase 2 (Backend):** 68 points
-- **Phase 3 (Angular):** 71 points
-- **Phase 4 (Next.js):** 71 points
-- **Phase 5 (Polish & Deployment):** 42 points
+## Phase Scope Summary
 
-**Total:** 278 story points
+| Phase | Description |
+|-------|-------------|
+| **Phase 1** | Learning & Foundation — environment setup, monorepo initialization, shared libraries |
+| **Phase 2** | Backend — NestJS API, database, authentication, products, orders, Swagger |
+| **Phase 3** | Angular Frontend — full SPA (customer, vendor, admin) |
+| **Phase 4** | Next.js Frontend — feature parity with Angular (Server/Client Components) |
+| **Phase 5** | Polish & Deployment — UX, performance, testing, deployment, documentation |
 
-Use these as a rough guide for scope. Work at your own pace — no fixed schedule.
+## Phase Review Checklist
 
-## Daily Standup Questions (Optional)
+Before considering a phase complete:
 
-1. What did I complete recently?
-2. What will I work on next?
-3. Any blockers?
-
-## Review Checklist (Optional)
-
-- [ ] Review completed stories
-- [ ] Demo working features
-- [ ] Update documentation
-- [ ] Plan next batch of work
+- [ ] All tasks and acceptance criteria for the phase are satisfied
+- [ ] Working features are demonstrable
+- [ ] Documentation is updated as needed
+- [ ] Next phase dependencies are clear

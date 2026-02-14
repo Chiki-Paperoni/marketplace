@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine  # Lightweight version
+    container_name: marketplace_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: marketplace_user
+      POSTGRES_PASSWORD: dev_password_123  # Change in production!
+      POSTGRES_DB: marketplace_dev
+    ports:
+      - "5432:5432"  # Maps container port to your machine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persists data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketplace_user -d marketplace_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:  # Named volume for data persistence

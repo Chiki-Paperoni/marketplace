@@ -2,7 +2,12 @@
   "name": "@org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:db": "docker compose up -d",
+    "dev:backend": "nx run backend:serve",
+    "backend:generate": "pnpm --filter @org/backend exec prisma generate",
+    "backend:seed": "pnpm --filter @org/backend run seed"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/core": "~20.3.0",

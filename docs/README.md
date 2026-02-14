@@ -27,6 +27,8 @@ This folder contains the product and technical specifications, organized by area
 | | [Phase 4: Next.js frontend](development/phase-4-nextjs-frontend.md) | Next.js implementation |
 | | [Phase 5: Polish & deployment](development/phase-5-polish-and-deployment.md) | UX, performance, testing, deploy, docs |
 | | [Development scope](development/sprint-metrics.md) | Phase scope summary and review checklist |
+| | [Today: Backend kickoff](development/today-backend-kickoff.md) | One-day plan to start Phase 2 (DB + Prisma) |
+| | [Local dev workflow](development/local-dev-workflow.md) | Daily start: DB, Prisma generate, backend; ports and scripts |
 | **Design** | [Design system](design/design-system.md) | Colors, typography, spacing |
 | **Configuration** | [Environment variables](configuration/environment-variables.md) | Backend, Angular, Next.js env config |
 | **Testing** | [Testing strategy](testing/testing-strategy.md) | Backend, frontend, E2E |

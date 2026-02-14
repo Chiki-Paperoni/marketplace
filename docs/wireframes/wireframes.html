@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Wireframes - All Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Navigation */
+        .nav-header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-header h1 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tabs button {
+            background: #555;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .nav-tabs button:hover {
+            background: #777;
+        }
+        
+        .nav-tabs button.active {
+            background: #0066cc;
+        }
+        
+        /* Page sections */
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        .page-list {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .page-link {
+            background: #f0f0f0;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .page-link:hover {
+            border-color: #0066cc;
+            background: #e8f4ff;
+        }
+        
+        .page-link h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .page-link p {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        /* Wireframe container */
+        .wireframe {
+            display: none;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .wireframe.active {
+            display: block;
+        }
+        
+        .wireframe-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #333;
+        }
+        
+        .wireframe-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+        
+        .back-button:hover {
+            background: #555;
+        }
+        
+        /* Wireframe elements */
+        .wire-box {
+            border: 2px solid #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: white;
+            position: relative;
+        }
+        
+        .wire-label {
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: white;
+            padding: 0 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        .wire-header {
+            border: 2px solid #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .wire-grid {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .wire-grid-2 { grid-template-columns: 1fr 1fr; }
+        .wire-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .wire-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+        .wire-grid-sidebar { grid-template-columns: 250px 1fr; }
+        
+        .wire-card {
+            border: 2px dashed #999;
+            padding: 15px;
+            background: #fafafa;
+            min-height: 200px;
+        }
+        
+        .wire-image {
+            width: 100%;
+            height: 150px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ddd,
+                #ddd 10px,
+                #eee 10px,
+                #eee 20px
+            );
+            border: 1px solid #999;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .wire-text {
+            background: #e0e0e0;
+            height: 12px;
+            margin-bottom: 8px;
+            border-radius: 2px;
+        }
+        
+        .wire-text.short { width: 60%; }
+        .wire-text.medium { width: 80%; }
+        .wire-text.long { width: 100%; }
+        
+        .wire-button {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+            cursor: default;
+        }
+        
+        .wire-button.primary {
+            background: #0066cc;
+        }
+        
+        .wire-button.secondary {
+            background: #666;
+        }
+        
+        .wire-input {
+            border: 2px solid #999;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            background: white;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .wire-select {
+            border: 2px solid #999;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            background: white;
+        }
+        
+        .wire-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .wire-table th,
+        .wire-table td {
+            border: 1px solid #999;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .wire-table th {
+            background: #e0e0e0;
+            font-weight: bold;
+        }
+        
+        .wire-sidebar {
+            border: 2px solid #999;
+            padding: 15px;
+            background: #f5f5f5;
+        }
+        
+        .wire-section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .wire-flex {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .wire-flex-1 { flex: 1; }
+        
+        .annotation {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #856404;
+        }
+        
+        .wire-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+        }
+        
+        .wire-tab {
+            padding: 10px 20px;
+            background: #e0e0e0;
+            border: 2px solid #333;
+            border-bottom: none;
+            cursor: default;
+        }
+        
+        .wire-tab.active {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <div class="nav-header">
+            <h1>📐 Marketplace Wireframes - All Pages</h1>
+            <div class="nav-tabs">
+                <button onclick="showSection('overview')" class="active">Overview</button>
+                <button onclick="showSection('public')">Public Pages (6)</button>
+                <button onclick="showSection('customer')">Customer Pages (9)</button>
+                <button onclick="showSection('vendor')">Vendor Pages (6)</button>
+                <button onclick="showSection('admin')">Admin Pages (7)</button>
+            </div>
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="page-section active">
+            <div style="padding: 40px; text-align: center;">
+                <h2 style="margin-bottom: 20px;">Multi-Vendor Marketplace Wireframes</h2>
+                <p style="color: #666; margin-bottom: 30px;">Interactive wireframes for all 28 pages. Click any section above to explore.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: left; margin-top: 40px;">
+                    <div style="padding: 20px; background: #f0f0f0; border-radius: 8px;">
+                        <h3 style="margin-bottom: 10px;">📄 Public Pages</h3>
+                        <p style="font-size: 14px; color: #666;">6 pages - No authentication required</p>
+                    </div>
+                    <div style="padding: 20px; background: #e8f4ff; border-radius: 8px;">
+                        <h3 style="margin-bottom: 10px;">🛒 Customer Pages</h3>
+                        <p style="font-size: 14px; color: #666;">9 pages - Shopping & account</p>
+                    </div>
+                    <div style="padding: 20px; background: #fff3e0; border-radius: 8px;">
+                        <h3 style="margin-bottom: 10px;">🏪 Vendor Pages</h3>
+                        <p style="font-size: 14px; color: #666;">6 pages - Business management</p>
+                    </div>
+                    <div style="padding: 20px; background: #f3e5f5; border-radius: 8px;">
+                        <h3 style="margin-bottom: 10px;">👑 Admin Pages</h3>
+                        <p style="font-size: 14px; color: #666;">7 pages - Platform control</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Public Pages Section -->
+        <div id="public" class="page-section">
+            <div class="page-list">
+                <div class="page-link" onclick="showWireframe('homepage')">
+                    <h3>Homepage</h3>
+                    <p>Landing page with featured products and categories</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('product-listing')">
+                    <h3>Product Listing</h3>
+                    <p>Browse all products with filters and search</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('product-detail')">
+                    <h3>Product Detail</h3>
+                    <p>Single product view with images and info</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('vendor-profile')">
+                    <h3>Vendor Profile</h3>
+                    <p>View vendor store and their products</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('search-results')">
+                    <h3>Search Results</h3>
+                    <p>Display search query results</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('login')">
+                    <h3>Login / Register</h3>
+                    <p>Authentication pages</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Pages Section -->
+        <div id="customer" class="page-section">
+            <div class="page-list">
+                <div class="page-link" onclick="showWireframe('cart')">
+                    <h3>Shopping Cart</h3>
+                    <p>View and manage cart items</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('checkout')">
+                    <h3>Checkout Flow</h3>
+                    <p>Multi-step checkout process</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('customer-dashboard')">
+                    <h3>Customer Dashboard</h3>
+                    <p>Account overview and navigation</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('order-history')">
+                    <h3>Order History</h3>
+                    <p>List of all customer orders</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('order-detail')">
+                    <h3>Order Detail</h3>
+                    <p>Single order view with tracking</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('customer-profile')">
+                    <h3>Profile Settings</h3>
+                    <p>Edit personal information</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('addresses')">
+                    <h3>Saved Addresses</h3>
+                    <p>Manage shipping addresses</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('wishlist')">
+                    <h3>Wishlist</h3>
+                    <p>Saved products for later</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('reviews')">
+                    <h3>My Reviews</h3>
+                    <p>Reviews written by customer</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vendor Pages Section -->
+        <div id="vendor" class="page-section">
+            <div class="page-list">
+                <div class="page-link" onclick="showWireframe('vendor-dashboard')">
+                    <h3>Vendor Dashboard</h3>
+                    <p>Business overview and analytics</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('vendor-products')">
+                    <h3>Products Management</h3>
+                    <p>List and manage all products</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('product-form')">
+                    <h3>Add/Edit Product</h3>
+                    <p>Product creation and editing form</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('vendor-orders')">
+                    <h3>Orders Management</h3>
+                    <p>View and process vendor orders</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('vendor-analytics')">
+                    <h3>Sales Analytics</h3>
+                    <p>Charts and business metrics</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('vendor-profile-edit')">
+                    <h3>Business Profile</h3>
+                    <p>Edit vendor information</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Pages Section -->
+        <div id="admin" class="page-section">
+            <div class="page-list">
+                <div class="page-link" onclick="showWireframe('admin-dashboard')">
+                    <h3>Admin Dashboard</h3>
+                    <p>Platform overview and metrics</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('admin-users')">
+                    <h3>Users Management</h3>
+                    <p>Manage all platform users</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('admin-vendors')">
+                    <h3>Vendors Management</h3>
+                    <p>Approve and manage vendors</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('admin-products')">
+                    <h3>Products Overview</h3>
+                    <p>View and moderate all products</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('admin-orders')">
+                    <h3>Orders Overview</h3>
+                    <p>View all platform orders</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('admin-categories')">
+                    <h3>Categories Management</h3>
+                    <p>Create and edit categories</p>
+                </div>
+                <div class="page-link" onclick="showWireframe('admin-settings')">
+                    <h3>Platform Settings</h3>
+                    <p>System configuration</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wireframes (will be shown/hidden) -->
+        
+        <!-- Homepage Wireframe -->
+        <div id="wire-homepage" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Homepage</h2>
+                <p>Landing page - First thing users see</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace</div>
+                <div>[Search Bar...........................]</div>
+                <div>[Cart Icon] [Login]</div>
+            </div>
+
+            <div class="wire-box">
+                <div class="wire-label">HERO SECTION</div>
+                <div class="wire-image">LARGE HERO IMAGE / BANNER - 1200x400px</div>
+                <h2>Discover Unique Products</h2>
+                <div class="wire-text long"></div>
+                <button class="wire-button primary">Shop Now</button>
+            </div>
+
+            <h3 class="wire-section-title">Browse by Category</h3>
+            <div class="wire-grid wire-grid-4">
+                <div class="wire-card">
+                    <div class="wire-image">Icon</div>
+                    <strong>Electronics</strong>
+                    <div class="wire-text short"></div>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Icon</div>
+                    <strong>Clothing</strong>
+                    <div class="wire-text short"></div>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Icon</div>
+                    <strong>Home & Garden</strong>
+                    <div class="wire-text short"></div>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Icon</div>
+                    <strong>Handmade</strong>
+                    <div class="wire-text short"></div>
+                </div>
+            </div>
+
+            <h3 class="wire-section-title">Featured Products</h3>
+            <div class="wire-grid wire-grid-4">
+                <div class="wire-card">
+                    <div class="wire-image">Product Photo</div>
+                    <strong>Product Name</strong>
+                    <div class="wire-text medium"></div>
+                    <p>$49.99</p>
+                    <small>by Vendor Name</small>
+                    <button class="wire-button primary">Add to Cart</button>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Product Photo</div>
+                    <strong>Product Name</strong>
+                    <div class="wire-text medium"></div>
+                    <p>$29.99</p>
+                    <small>by Vendor Name</small>
+                    <button class="wire-button primary">Add to Cart</button>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Product Photo</div>
+                    <strong>Product Name</strong>
+                    <div class="wire-text medium"></div>
+                    <p>$79.99</p>
+                    <small>by Vendor Name</small>
+                    <button class="wire-button primary">Add to Cart</button>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Product Photo</div>
+                    <strong>Product Name</strong>
+                    <div class="wire-text medium"></div>
+                    <p>$19.99</p>
+                    <small>by Vendor Name</small>
+                    <button class="wire-button primary">Add to Cart</button>
+                </div>
+            </div>
+
+            <h3 class="wire-section-title">Featured Vendors</h3>
+            <div class="wire-grid wire-grid-3">
+                <div class="wire-card">
+                    <div class="wire-image">Vendor Logo</div>
+                    <strong>Vendor Name</strong>
+                    <div class="wire-text long"></div>
+                    <small>⭐⭐⭐⭐⭐ 4.8 (234 reviews)</small>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Vendor Logo</div>
+                    <strong>Vendor Name</strong>
+                    <div class="wire-text long"></div>
+                    <small>⭐⭐⭐⭐⭐ 4.9 (567 reviews)</small>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Vendor Logo</div>
+                    <strong>Vendor Name</strong>
+                    <div class="wire-text long"></div>
+                    <small>⭐⭐⭐⭐⭐ 4.7 (123 reviews)</small>
+                </div>
+            </div>
+
+            <div class="wire-box" style="margin-top: 40px; background: #f5f5f5;">
+                <div class="wire-label">FOOTER</div>
+                <div class="wire-grid wire-grid-4">
+                    <div>
+                        <strong>About</strong>
+                        <div class="wire-text short"></div>
+                        <div class="wire-text short"></div>
+                        <div class="wire-text short"></div>
+                    </div>
+                    <div>
+                        <strong>Help</strong>
+                        <div class="wire-text short"></div>
+                        <div class="wire-text short"></div>
+                        <div class="wire-text short"></div>
+                    </div>
+                    <div>
+                        <strong>Legal</strong>
+                        <div class="wire-text short"></div>
+                        <div class="wire-text short"></div>
+                        <div class="wire-text short"></div>
+                    </div>
+                    <div>
+                        <strong>Social</strong>
+                        <div>[Icon] [Icon] [Icon] [Icon]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Listing Wireframe -->
+        <div id="wire-product-listing" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Product Listing</h2>
+                <p>Browse all products with filters</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace</div>
+                <div>[Search Bar...........................]</div>
+                <div>[Cart Icon] [Account]</div>
+            </div>
+
+            <div class="wire-box">
+                <h2>All Products</h2>
+                <p>Browse our collection of products</p>
+            </div>
+
+            <div class="wire-grid wire-grid-sidebar">
+                <div class="wire-sidebar">
+                    <div class="wire-label">FILTERS</div>
+                    
+                    <h4>Price Range</h4>
+                    <input type="text" class="wire-input" placeholder="Min: $0" />
+                    <input type="text" class="wire-input" placeholder="Max: $500" />
+                    
+                    <h4 style="margin-top: 20px;">Category</h4>
+                    <label style="display: block; margin: 10px 0;">
+                        <input type="checkbox" /> Electronics
+                    </label>
+                    <label style="display: block; margin: 10px 0;">
+                        <input type="checkbox" /> Clothing
+                    </label>
+                    <label style="display: block; margin: 10px 0;">
+                        <input type="checkbox" /> Home & Garden
+                    </label>
+                    <label style="display: block; margin: 10px 0;">
+                        <input type="checkbox" /> Handmade
+                    </label>
+                    
+                    <h4 style="margin-top: 20px;">Rating</h4>
+                    <label style="display: block; margin: 10px 0;">
+                        <input type="checkbox" /> ⭐⭐⭐⭐⭐ & up
+                    </label>
+                    <label style="display: block; margin: 10px 0;">
+                        <input type="checkbox" /> ⭐⭐⭐⭐ & up
+                    </label>
+                    <label style="display: block; margin: 10px 0;">
+                        <input type="checkbox" /> ⭐⭐⭐ & up
+                    </label>
+                    
+                    <button class="wire-button primary" style="width: 100%; margin-top: 20px;">Apply Filters</button>
+                    <button class="wire-button secondary" style="width: 100%;">Clear All</button>
+                </div>
+
+                <div>
+                    <div class="wire-flex" style="justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <strong>1,234 Products Found</strong>
+                        </div>
+                        <div>
+                            Sort by: 
+                            <select class="wire-select" style="width: auto; display: inline-block; margin: 0;">
+                                <option>Relevance</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Newest</option>
+                                <option>Best Rating</option>
+                            </select>
+                        </div>
+                        <div>
+                            [Grid View] [List View]
+                        </div>
+                    </div>
+
+                    <div class="wire-grid wire-grid-3">
+                        <div class="wire-card">
+                            <div class="wire-image">Product Image</div>
+                            <strong>Product Name Here</strong>
+                            <div class="wire-text medium"></div>
+                            <p style="font-size: 18px; font-weight: bold; margin: 10px 0;">$49.99</p>
+                            <small>by Vendor Name</small><br>
+                            <small>⭐⭐⭐⭐⭐ 4.5 (89 reviews)</small>
+                            <button class="wire-button primary" style="width: 100%; margin-top: 10px;">Add to Cart</button>
+                        </div>
+                        <div class="wire-card">
+                            <div class="wire-image">Product Image</div>
+                            <strong>Product Name Here</strong>
+                            <div class="wire-text medium"></div>
+                            <p style="font-size: 18px; font-weight: bold; margin: 10px 0;">$29.99</p>
+                            <small>by Vendor Name</small><br>
+                            <small>⭐⭐⭐⭐⭐ 4.8 (234 reviews)</small>
+                            <button class="wire-button primary" style="width: 100%; margin-top: 10px;">Add to Cart</button>
+                        </div>
+                        <div class="wire-card">
+                            <div class="wire-image">Product Image</div>
+                            <strong>Product Name Here</strong>
+                            <div class="wire-text medium"></div>
+                            <p style="font-size: 18px; font-weight: bold; margin: 10px 0;">$79.99</p>
+                            <small>by Vendor Name</small><br>
+                            <small>⭐⭐⭐⭐ 4.2 (45 reviews)</small>
+                            <button class="wire-button primary" style="width: 100%; margin-top: 10px;">Add to Cart</button>
+                        </div>
+                        <div class="wire-card">
+                            <div class="wire-image">Product Image</div>
+                            <strong>Product Name Here</strong>
+                            <div class="wire-text medium"></div>
+                            <p style="font-size: 18px; font-weight: bold; margin: 10px 0;">$19.99</p>
+                            <small>by Vendor Name</small><br>
+                            <small>⭐⭐⭐⭐⭐ 4.9 (567 reviews)</small>
+                            <button class="wire-button primary" style="width: 100%; margin-top: 10px;">Add to Cart</button>
+                        </div>
+                        <div class="wire-card">
+                            <div class="wire-image">Product Image</div>
+                            <strong>Product Name Here</strong>
+                            <div class="wire-text medium"></div>
+                            <p style="font-size: 18px; font-weight: bold; margin: 10px 0;">$39.99</p>
+                            <small>by Vendor Name</small><br>
+                            <small>⭐⭐⭐⭐ 4.3 (123 reviews)</small>
+                            <button class="wire-button primary" style="width: 100%; margin-top: 10px;">Add to Cart</button>
+                        </div>
+                        <div class="wire-card">
+                            <div class="wire-image">Product Image</div>
+                            <strong>Product Name Here</strong>
+                            <div class="wire-text medium"></div>
+                            <p style="font-size: 18px; font-weight: bold; margin: 10px 0;">$59.99</p>
+                            <small>by Vendor Name</small><br>
+                            <small>⭐⭐⭐⭐⭐ 4.7 (345 reviews)</small>
+                            <button class="wire-button primary" style="width: 100%; margin-top: 10px;">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="wire-button secondary">← Previous</button>
+                        <button class="wire-button">1</button>
+                        <button class="wire-button primary">2</button>
+                        <button class="wire-button">3</button>
+                        <button class="wire-button">4</button>
+                        <button class="wire-button">5</button>
+                        <button class="wire-button secondary">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Wireframe -->
+        <div id="wire-product-detail" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Product Detail Page</h2>
+                <p>Single product view with full details</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace</div>
+                <div>[Search Bar...........................]</div>
+                <div>[Cart Icon] [Account]</div>
+            </div>
+
+            <div class="wire-box">
+                <small>Home > Electronics > Laptops > Product Name</small>
+            </div>
+
+            <div class="wire-grid wire-grid-2">
+                <div>
+                    <div class="wire-box">
+                        <div class="wire-label">MAIN IMAGE</div>
+                        <div class="wire-image" style="height: 400px;">LARGE PRODUCT IMAGE - 600x600px</div>
+                    </div>
+                    
+                    <div class="wire-flex" style="margin-top: 15px;">
+                        <div class="wire-image" style="width: 100px; height: 100px; flex: none;">Thumb</div>
+                        <div class="wire-image" style="width: 100px; height: 100px; flex: none;">Thumb</div>
+                        <div class="wire-image" style="width: 100px; height: 100px; flex: none;">Thumb</div>
+                        <div class="wire-image" style="width: 100px; height: 100px; flex: none;">Thumb</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h1>Premium Wireless Headphones</h1>
+                    <div style="margin: 15px 0;">
+                        ⭐⭐⭐⭐⭐ 4.8 (234 reviews)
+                    </div>
+                    
+                    <div style="font-size: 32px; font-weight: bold; margin: 20px 0;">
+                        $149.99
+                        <span style="font-size: 18px; color: #999; text-decoration: line-through; margin-left: 10px;">$199.99</span>
+                    </div>
+                    
+                    <div class="wire-box">
+                        <strong>Sold by:</strong> <a href="#">TechVendor Store</a><br>
+                        <small>⭐⭐⭐⭐⭐ 4.9 rating | 1,234 sales</small>
+                    </div>
+                    
+                    <div class="wire-box">
+                        <strong>In Stock:</strong> 47 units available
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <label><strong>Quantity:</strong></label>
+                        <select class="wire-select" style="width: 100px;">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    
+                    <button class="wire-button primary" style="width: 100%; padding: 15px; font-size: 16px;">Add to Cart</button>
+                    <button class="wire-button secondary" style="width: 100%; padding: 15px; font-size: 16px;">Add to Wishlist</button>
+                    
+                    <div class="wire-box" style="margin-top: 20px;">
+                        <strong>Free Shipping</strong> on orders over $50<br>
+                        <strong>30-Day Returns</strong> | Money-back guarantee
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="wire-section-title">Product Description</h3>
+            <div class="wire-box">
+                <div class="wire-text long"></div>
+                <div class="wire-text long"></div>
+                <div class="wire-text long"></div>
+                <div class="wire-text medium"></div>
+                
+                <h4 style="margin-top: 20px;">Features:</h4>
+                <ul style="margin-left: 20px;">
+                    <li style="margin: 10px 0;"><div class="wire-text long"></div></li>
+                    <li style="margin: 10px 0;"><div class="wire-text long"></div></li>
+                    <li style="margin: 10px 0;"><div class="wire-text medium"></div></li>
+                    <li style="margin: 10px 0;"><div class="wire-text long"></div></li>
+                </ul>
+                
+                <h4 style="margin-top: 20px;">Specifications:</h4>
+                <table class="wire-table">
+                    <tr>
+                        <td><strong>Brand</strong></td>
+                        <td>TechBrand</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Model</strong></td>
+                        <td>WH-1000XM5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Color</strong></td>
+                        <td>Black, Silver, White</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weight</strong></td>
+                        <td>250g</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 class="wire-section-title">Customer Reviews (234)</h3>
+            <div class="wire-box">
+                <div class="wire-flex" style="margin-bottom: 20px;">
+                    <div style="text-align: center; padding: 20px; background: #f5f5f5; border-radius: 8px;">
+                        <div style="font-size: 48px; font-weight: bold;">4.8</div>
+                        <div>⭐⭐⭐⭐⭐</div>
+                        <div>234 reviews</div>
+                    </div>
+                    <div style="flex: 1; padding-left: 30px;">
+                        <div>⭐⭐⭐⭐⭐ <div class="wire-text" style="display: inline-block; width: 80%;"></div> 198</div>
+                        <div>⭐⭐⭐⭐ <div class="wire-text" style="display: inline-block; width: 15%;"></div> 28</div>
+                        <div>⭐⭐⭐ <div class="wire-text" style="display: inline-block; width: 5%;"></div> 6</div>
+                        <div>⭐⭐ <div class="wire-text" style="display: inline-block; width: 2%;"></div> 2</div>
+                        <div>⭐ <div class="wire-text" style="display: inline-block; width: 0%;"></div> 0</div>
+                    </div>
+                </div>
+                
+                <button class="wire-button primary">Write a Review</button>
+                
+                <div style="margin-top: 30px;">
+                    <div class="wire-box">
+                        <div style="margin-bottom: 10px;">
+                            ⭐⭐⭐⭐⭐ <strong>John Doe</strong> <small style="color: #999;">- 2 weeks ago</small>
+                        </div>
+                        <strong>Great product!</strong>
+                        <div class="wire-text long"></div>
+                        <div class="wire-text long"></div>
+                        <div class="wire-text medium"></div>
+                        <div style="margin-top: 10px;">
+                            <small>Was this helpful? [Yes (12)] [No (1)]</small>
+                        </div>
+                    </div>
+                    
+                    <div class="wire-box">
+                        <div style="margin-bottom: 10px;">
+                            ⭐⭐⭐⭐⭐ <strong>Jane Smith</strong> <small style="color: #999;">- 1 month ago</small>
+                        </div>
+                        <strong>Excellent quality</strong>
+                        <div class="wire-text long"></div>
+                        <div class="wire-text medium"></div>
+                        <div style="margin-top: 10px;">
+                            <small>Was this helpful? [Yes (8)] [No (0)]</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="wire-button">Load More Reviews</button>
+                </div>
+            </div>
+
+            <h3 class="wire-section-title">Related Products</h3>
+            <div class="wire-grid wire-grid-4">
+                <div class="wire-card">
+                    <div class="wire-image">Product</div>
+                    <strong>Related Product 1</strong>
+                    <p>$89.99</p>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Product</div>
+                    <strong>Related Product 2</strong>
+                    <p>$129.99</p>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Product</div>
+                    <strong>Related Product 3</strong>
+                    <p>$99.99</p>
+                </div>
+                <div class="wire-card">
+                    <div class="wire-image">Product</div>
+                    <strong>Related Product 4</strong>
+                    <p>$159.99</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Wireframe -->
+        <div id="wire-cart" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Shopping Cart</h2>
+                <p>Review items before checkout</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace</div>
+                <div>[Search Bar...........................]</div>
+                <div>[Cart Icon (3)] [Account]</div>
+            </div>
+
+            <h1 style="padding: 0 30px;">Shopping Cart (3 items)</h1>
+
+            <div class="wire-grid wire-grid-sidebar" style="margin-top: 30px;">
+                <div style="grid-column: span 2;">
+                    <div class="wire-box">
+                        <div class="wire-flex">
+                            <div class="wire-image" style="width: 120px; height: 120px; flex: none;">Product Image</div>
+                            <div style="flex: 1; padding-left: 20px;">
+                                <h3>Premium Wireless Headphones</h3>
+                                <div class="wire-text medium"></div>
+                                <small>Sold by: TechVendor Store</small><br>
+                                <small style="color: green;">✓ In Stock</small>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">$149.99</div>
+                                <div>
+                                    Qty: 
+                                    <select style="padding: 5px; border: 2px solid #999;">
+                                        <option>1</option>
+                                        <option selected>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div style="margin-top: 15px;">
+                                    <a href="#" style="color: #0066cc;">Remove</a> | 
+                                    <a href="#" style="color: #0066cc;">Save for Later</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wire-box">
+                        <div class="wire-flex">
+                            <div class="wire-image" style="width: 120px; height: 120px; flex: none;">Product Image</div>
+                            <div style="flex: 1; padding-left: 20px;">
+                                <h3>Leather Wallet</h3>
+                                <div class="wire-text medium"></div>
+                                <small>Sold by: Crafts Shop</small><br>
+                                <small style="color: green;">✓ In Stock</small>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">$49.99</div>
+                                <div>
+                                    Qty: 
+                                    <select style="padding: 5px; border: 2px solid #999;">
+                                        <option selected>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div style="margin-top: 15px;">
+                                    <a href="#" style="color: #0066cc;">Remove</a> | 
+                                    <a href="#" style="color: #0066cc;">Save for Later</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="wire-box">
+                        <div class="wire-label">ORDER SUMMARY</div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                                <span>Subtotal (3 items):</span>
+                                <strong>$349.97</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                                <span>Shipping:</span>
+                                <strong>$10.00</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                                <span>Tax:</span>
+                                <strong>$28.00</strong>
+                            </div>
+                            <hr style="margin: 15px 0;">
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0; font-size: 20px;">
+                                <strong>Total:</strong>
+                                <strong>$387.97</strong>
+                            </div>
+                        </div>
+                        
+                        <button class="wire-button primary" style="width: 100%; padding: 15px; font-size: 16px;">Proceed to Checkout</button>
+                        
+                        <div style="text-align: center; margin-top: 15px;">
+                            <a href="#" style="color: #0066cc;">Continue Shopping</a>
+                        </div>
+                    </div>
+                    
+                    <div class="wire-box" style="margin-top: 20px; background: #f0f9ff;">
+                        <strong>🎉 Free Shipping</strong><br>
+                        <small>on orders over $50!</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Wireframe -->
+        <div id="wire-checkout" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Checkout Flow (Multi-Step)</h2>
+                <p>Three-step checkout process</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace</div>
+                <div style="text-align: center; flex: 1;">
+                    <strong>Step 1: Shipping</strong> → Step 2: Payment → Step 3: Review
+                </div>
+            </div>
+
+            <div class="annotation">
+                This shows Step 1 (Shipping Address). Steps 2 and 3 follow similar structure with different content.
+            </div>
+
+            <div class="wire-grid wire-grid-sidebar">
+                <div style="grid-column: span 2;">
+                    <h2>Shipping Address</h2>
+                    
+                    <div class="wire-box">
+                        <div class="wire-label">SAVED ADDRESSES</div>
+                        
+                        <div style="padding: 15px; border: 3px solid #0066cc; background: #f0f9ff; margin-bottom: 15px; cursor: pointer;">
+                            <input type="radio" checked /> 
+                            <strong>Home</strong> (Default)<br>
+                            John Doe<br>
+                            123 Main Street<br>
+                            Kyiv, 01001, Ukraine<br>
+                            +380 123 456 789
+                            <div style="margin-top: 10px;">
+                                <a href="#" style="color: #0066cc;">Edit</a> | 
+                                <a href="#" style="color: #0066cc;">Delete</a>
+                            </div>
+                        </div>
+                        
+                        <div style="padding: 15px; border: 2px solid #ddd; margin-bottom: 15px; cursor: pointer;">
+                            <input type="radio" /> 
+                            <strong>Work</strong><br>
+                            John Doe<br>
+                            456 Business Ave<br>
+                            Kyiv, 02002, Ukraine<br>
+                            +380 987 654 321
+                            <div style="margin-top: 10px;">
+                                <a href="#" style="color: #0066cc;">Edit</a> | 
+                                <a href="#" style="color: #0066cc;">Delete</a>
+                            </div>
+                        </div>
+                        
+                        <button class="wire-button secondary">+ Add New Address</button>
+                    </div>
+                    
+                    <div class="wire-box">
+                        <div class="wire-label">OR ADD NEW ADDRESS</div>
+                        
+                        <div class="wire-grid wire-grid-2">
+                            <div>
+                                <label><strong>First Name *</strong></label>
+                                <input type="text" class="wire-input" placeholder="John" />
+                            </div>
+                            <div>
+                                <label><strong>Last Name *</strong></label>
+                                <input type="text" class="wire-input" placeholder="Doe" />
+                            </div>
+                        </div>
+                        
+                        <label><strong>Address Line 1 *</strong></label>
+                        <input type="text" class="wire-input" placeholder="Street address" />
+                        
+                        <label><strong>Address Line 2</strong></label>
+                        <input type="text" class="wire-input" placeholder="Apartment, suite, etc. (optional)" />
+                        
+                        <div class="wire-grid wire-grid-2">
+                            <div>
+                                <label><strong>City *</strong></label>
+                                <input type="text" class="wire-input" placeholder="Kyiv" />
+                            </div>
+                            <div>
+                                <label><strong>Postal Code *</strong></label>
+                                <input type="text" class="wire-input" placeholder="01001" />
+                            </div>
+                        </div>
+                        
+                        <label><strong>Phone Number *</strong></label>
+                        <input type="text" class="wire-input" placeholder="+380 123 456 789" />
+                        
+                        <label style="display: block; margin-top: 15px;">
+                            <input type="checkbox" /> Set as default address
+                        </label>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+                        <button class="wire-button secondary">← Back to Cart</button>
+                        <button class="wire-button primary" style="padding: 15px 40px;">Continue to Payment →</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="wire-box">
+                        <div class="wire-label">ORDER SUMMARY</div>
+                        
+                        <h3>3 Items</h3>
+                        
+                        <div style="margin: 20px 0;">
+                            <div class="wire-flex" style="margin-bottom: 10px;">
+                                <div class="wire-image" style="width: 60px; height: 60px; flex: none;">Img</div>
+                                <div style="padding-left: 10px; flex: 1;">
+                                    <small><strong>Product Name</strong></small><br>
+                                    <small>Qty: 2</small>
+                                </div>
+                                <div>
+                                    <strong>$149.99</strong>
+                                </div>
+                            </div>
+                            
+                            <div class="wire-flex" style="margin-bottom: 10px;">
+                                <div class="wire-image" style="width: 60px; height: 60px; flex: none;">Img</div>
+                                <div style="padding-left: 10px; flex: 1;">
+                                    <small><strong>Product Name</strong></small><br>
+                                    <small>Qty: 1</small>
+                                </div>
+                                <div>
+                                    <strong>$49.99</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div style="margin: 15px 0;">
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                                <span>Subtotal:</span>
+                                <span>$349.97</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                                <span>Shipping:</span>
+                                <span>$10.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                                <span>Tax:</span>
+                                <span>$28.00</span>
+                            </div>
+                            <hr>
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0; font-size: 20px;">
+                                <strong>Total:</strong>
+                                <strong>$387.97</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vendor Dashboard Wireframe -->
+        <div id="wire-vendor-dashboard" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Vendor Dashboard</h2>
+                <p>Business overview and quick actions</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace - Vendor Portal</div>
+                <div>[Search]</div>
+                <div>[Notifications (3)] [Account]</div>
+            </div>
+
+            <div class="wire-flex">
+                <div style="width: 250px; flex: none;">
+                    <div class="wire-sidebar">
+                        <div class="wire-label">VENDOR MENU</div>
+                        <div style="padding: 10px; background: #0066cc; color: white; margin-bottom: 5px;">
+                            📊 Dashboard
+                        </div>
+                        <div style="padding: 10px; margin-bottom: 5px;">📦 Products</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">📋 Orders</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">📈 Analytics</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">⭐ Reviews</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">👤 Profile</div>
+                        <hr style="margin: 15px 0;">
+                        <div style="padding: 10px; margin-bottom: 5px;">⚙️ Settings</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">🚪 Logout</div>
+                    </div>
+                </div>
+
+                <div style="flex: 1; padding-left: 30px;">
+                    <h1>Welcome back, TechVendor Store!</h1>
+                    <p style="color: #666;">Here's what's happening with your business today.</p>
+
+                    <div class="wire-grid wire-grid-4" style="margin-top: 30px;">
+                        <div class="wire-box" style="text-align: center; background: #f0f9ff;">
+                            <div style="font-size: 36px; font-weight: bold; color: #0066cc;">$4,289</div>
+                            <div>Sales This Month</div>
+                            <small style="color: green;">↑ 12% from last month</small>
+                        </div>
+                        <div class="wire-box" style="text-align: center; background: #f0fff4;">
+                            <div style="font-size: 36px; font-weight: bold; color: #10b981;">47</div>
+                            <div>Total Products</div>
+                            <small>3 need restocking</small>
+                        </div>
+                        <div class="wire-box" style="text-align: center; background: #fef3c7;">
+                            <div style="font-size: 36px; font-weight: bold; color: #f59e0b;">12</div>
+                            <div>Pending Orders</div>
+                            <small style="color: red;">5 need shipping</small>
+                        </div>
+                        <div class="wire-box" style="text-align: center; background: #f3e8ff;">
+                            <div style="font-size: 36px; font-weight: bold; color: #8b5cf6;">4.8</div>
+                            <div>Average Rating</div>
+                            <small>234 reviews</small>
+                        </div>
+                    </div>
+
+                    <div class="wire-grid wire-grid-2" style="margin-top: 30px;">
+                        <div class="wire-box">
+                            <div class="wire-label">SALES CHART (LAST 30 DAYS)</div>
+                            <div class="wire-image" style="height: 250px;">📈 Line Chart<br>Revenue over time</div>
+                        </div>
+
+                        <div class="wire-box">
+                            <div class="wire-label">TOP SELLING PRODUCTS</div>
+                            <table class="wire-table">
+                                <tr>
+                                    <td>Premium Headphones</td>
+                                    <td>$149.99</td>
+                                    <td>45 sold</td>
+                                </tr>
+                                <tr>
+                                    <td>Wireless Mouse</td>
+                                    <td>$29.99</td>
+                                    <td>38 sold</td>
+                                </tr>
+                                <tr>
+                                    <td>USB-C Cable</td>
+                                    <td>$12.99</td>
+                                    <td>67 sold</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Case</td>
+                                    <td>$19.99</td>
+                                    <td>34 sold</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h3 class="wire-section-title">Recent Orders</h3>
+                    <div class="wire-box">
+                        <table class="wire-table">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-1234</td>
+                                    <td>John Doe</td>
+                                    <td>Premium Headphones</td>
+                                    <td>$149.99</td>
+                                    <td><span style="background: #fef3c7; padding: 4px 8px; border-radius: 4px;">Pending</span></td>
+                                    <td><button class="wire-button">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-1233</td>
+                                    <td>Jane Smith</td>
+                                    <td>Wireless Mouse</td>
+                                    <td>$29.99</td>
+                                    <td><span style="background: #dcfce7; padding: 4px 8px; border-radius: 4px;">Shipped</span></td>
+                                    <td><button class="wire-button">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-1232</td>
+                                    <td>Bob Johnson</td>
+                                    <td>USB-C Cable</td>
+                                    <td>$12.99</td>
+                                    <td><span style="background: #dcfce7; padding: 4px 8px; border-radius: 4px;">Delivered</span></td>
+                                    <td><button class="wire-button">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="text-align: center; margin-top: 15px;">
+                            <button class="wire-button primary">View All Orders</button>
+                        </div>
+                    </div>
+
+                    <h3 class="wire-section-title">Low Stock Alerts</h3>
+                    <div class="wire-box" style="background: #fef2f2;">
+                        <div style="padding: 15px; border-bottom: 1px solid #ddd;">
+                            ⚠️ <strong>Premium Headphones</strong> - Only 3 left in stock
+                            <button class="wire-button" style="float: right;">Restock</button>
+                        </div>
+                        <div style="padding: 15px; border-bottom: 1px solid #ddd;">
+                            ⚠️ <strong>Phone Case</strong> - Only 5 left in stock
+                            <button class="wire-button" style="float: right;">Restock</button>
+                        </div>
+                        <div style="padding: 15px;">
+                            ⚠️ <strong>Screen Protector</strong> - Only 2 left in stock
+                            <button class="wire-button" style="float: right;">Restock</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Form Wireframe -->
+        <div id="wire-product-form" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Add/Edit Product (Vendor)</h2>
+                <p>Multi-tab product creation form</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace - Vendor Portal</div>
+                <div>Add New Product</div>
+                <div>[Account]</div>
+            </div>
+
+            <div style="padding: 0 30px;">
+                <h1>Add New Product</h1>
+                
+                <div class="wire-tabs">
+                    <div class="wire-tab active">Basic Info</div>
+                    <div class="wire-tab">Pricing & Inventory</div>
+                    <div class="wire-tab">Images</div>
+                    <div class="wire-tab">Variants</div>
+                    <div class="wire-tab">SEO</div>
+                </div>
+
+                <div class="annotation">
+                    This shows Tab 1 (Basic Info). Other tabs would have different fields but similar structure.
+                </div>
+
+                <div class="wire-box">
+                    <div class="wire-label">BASIC INFORMATION</div>
+                    
+                    <label><strong>Product Name *</strong></label>
+                    <input type="text" class="wire-input" placeholder="e.g., Premium Wireless Headphones" />
+                    <small>Be clear and descriptive. Include key features or benefits.</small>
+                    
+                    <label style="margin-top: 20px;"><strong>Description *</strong></label>
+                    <div style="border: 2px solid #999; padding: 15px; background: white; min-height: 200px;">
+                        [Rich Text Editor]<br>
+                        Toolbar: [B] [I] [U] [Link] [List] [Image]<br><br>
+                        Product description goes here...
+                    </div>
+                    
+                    <label style="margin-top: 20px;"><strong>Category *</strong></label>
+                    <select class="wire-select">
+                        <option>Select a category...</option>
+                        <option>Electronics</option>
+                        <option>Clothing</option>
+                        <option>Home & Garden</option>
+                        <option>Handmade</option>
+                    </select>
+                    
+                    <label style="margin-top: 20px;"><strong>Status</strong></label>
+                    <select class="wire-select">
+                        <option>Draft</option>
+                        <option>Published</option>
+                        <option>Archived</option>
+                    </select>
+                </div>
+
+                <div class="wire-box">
+                    <div class="wire-label">PRICING & INVENTORY</div>
+                    
+                    <div class="wire-grid wire-grid-3">
+                        <div>
+                            <label><strong>Price *</strong></label>
+                            <input type="text" class="wire-input" placeholder="$0.00" />
+                        </div>
+                        <div>
+                            <label><strong>Compare at Price</strong></label>
+                            <input type="text" class="wire-input" placeholder="$0.00" />
+                            <small>Show discount</small>
+                        </div>
+                        <div>
+                            <label><strong>Cost per Item</strong></label>
+                            <input type="text" class="wire-input" placeholder="$0.00" />
+                            <small>For profit tracking</small>
+                        </div>
+                    </div>
+                    
+                    <div class="wire-grid wire-grid-3" style="margin-top: 20px;">
+                        <div>
+                            <label><strong>Stock Quantity *</strong></label>
+                            <input type="text" class="wire-input" placeholder="0" />
+                        </div>
+                        <div>
+                            <label><strong>SKU</strong></label>
+                            <input type="text" class="wire-input" placeholder="Optional" />
+                        </div>
+                        <div>
+                            <label><strong>Barcode</strong></label>
+                            <input type="text" class="wire-input" placeholder="Optional" />
+                        </div>
+                    </div>
+                    
+                    <label style="display: block; margin-top: 20px;">
+                        <input type="checkbox" /> Track inventory
+                    </label>
+                    <label style="display: block;">
+                        <input type="checkbox" /> Continue selling when out of stock
+                    </label>
+                </div>
+
+                <div class="wire-box">
+                    <div class="wire-label">PRODUCT IMAGES</div>
+                    
+                    <div style="border: 3px dashed #999; padding: 40px; text-align: center; background: #fafafa; margin-bottom: 20px;">
+                        <div style="font-size: 48px; margin-bottom: 15px;">📤</div>
+                        <strong>Drag and drop images here</strong><br>
+                        <small>or</small><br>
+                        <button class="wire-button primary" style="margin-top: 15px;">Browse Files</button><br>
+                        <small style="color: #666;">Recommended: 1200x1200px, JPG or PNG</small>
+                    </div>
+                    
+                    <div class="wire-grid wire-grid-4">
+                        <div style="border: 2px solid #0066cc; padding: 10px; background: #f0f9ff;">
+                            <div class="wire-image">Image 1</div>
+                            <small><strong>Featured Image</strong></small><br>
+                            <div style="margin-top: 10px;">
+                                <button class="wire-button" style="padding: 5px 10px; font-size: 12px;">Remove</button>
+                            </div>
+                        </div>
+                        <div style="border: 2px solid #ddd; padding: 10px;">
+                            <div class="wire-image">Image 2</div>
+                            <button class="wire-button primary" style="padding: 5px 10px; font-size: 12px; margin-top: 10px;">Set Featured</button>
+                            <button class="wire-button" style="padding: 5px 10px; font-size: 12px;">Remove</button>
+                        </div>
+                        <div style="border: 2px solid #ddd; padding: 10px;">
+                            <div class="wire-image">Image 3</div>
+                            <button class="wire-button primary" style="padding: 5px 10px; font-size: 12px; margin-top: 10px;">Set Featured</button>
+                            <button class="wire-button" style="padding: 5px 10px; font-size: 12px;">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-top: 30px; padding-bottom: 30px;">
+                    <button class="wire-button secondary">Cancel</button>
+                    <div>
+                        <button class="wire-button">Save as Draft</button>
+                        <button class="wire-button primary">Publish Product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard Wireframe -->
+        <div id="wire-admin-dashboard" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            
+            <div class="wireframe-header">
+                <h2>Admin Dashboard</h2>
+                <p>Platform overview and management</p>
+            </div>
+
+            <div class="wire-header">
+                <div>[LOGO] Marketplace - Admin Panel</div>
+                <div>[Search]</div>
+                <div>[Notifications] [Admin Account]</div>
+            </div>
+
+            <div class="wire-flex">
+                <div style="width: 250px; flex: none;">
+                    <div class="wire-sidebar">
+                        <div class="wire-label">ADMIN MENU</div>
+                        <div style="padding: 10px; background: #0066cc; color: white; margin-bottom: 5px;">
+                            📊 Dashboard
+                        </div>
+                        <div style="padding: 10px; margin-bottom: 5px;">👥 Users</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">🏪 Vendors</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">📦 Products</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">📋 Orders</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">📂 Categories</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">📈 Analytics</div>
+                        <hr style="margin: 15px 0;">
+                        <div style="padding: 10px; margin-bottom: 5px;">⚙️ Settings</div>
+                        <div style="padding: 10px; margin-bottom: 5px;">🚪 Logout</div>
+                    </div>
+                </div>
+
+                <div style="flex: 1; padding-left: 30px;">
+                    <h1>Platform Overview</h1>
+                    <p style="color: #666;">Monitor and manage your marketplace</p>
+
+                    <div class="wire-grid wire-grid-4" style="margin-top: 30px;">
+                        <div class="wire-box" style="text-align: center; background: #f0f9ff;">
+                            <div style="font-size: 36px; font-weight: bold; color: #0066cc;">$124,589</div>
+                            <div>Total Revenue</div>
+                            <small style="color: green;">↑ 23% this month</small>
+                        </div>
+                        <div class="wire-box" style="text-align: center; background: #f0fff4;">
+                            <div style="font-size: 36px; font-weight: bold; color: #10b981;">8,542</div>
+                            <div>Total Users</div>
+                            <small>234 new this week</small>
+                        </div>
+                        <div class="wire-box" style="text-align: center; background: #fef3c7;">
+                            <div style="font-size: 36px; font-weight: bold; color: #f59e0b;">127</div>
+                            <div>Active Vendors</div>
+                            <small>12 pending approval</small>
+                        </div>
+                        <div class="wire-box" style="text-align: center; background: #f3e8ff;">
+                            <div style="font-size: 36px; font-weight: bold; color: #8b5cf6;">2,345</div>
+                            <div>Total Products</div>
+                            <small>45 published today</small>
+                        </div>
+                    </div>
+
+                    <div class="wire-grid wire-grid-2" style="margin-top: 30px;">
+                        <div class="wire-box">
+                            <div class="wire-label">REVENUE (LAST 6 MONTHS)</div>
+                            <div class="wire-image" style="height: 300px;">📊 Bar Chart<br>Monthly revenue comparison</div>
+                        </div>
+
+                        <div class="wire-box">
+                            <div class="wire-label">USER GROWTH</div>
+                            <div class="wire-image" style="height: 300px;">📈 Line Chart<br>New users over time</div>
+                        </div>
+                    </div>
+
+                    <h3 class="wire-section-title">Pending Actions</h3>
+                    <div class="wire-grid wire-grid-2">
+                        <div class="wire-box" style="background: #fef2f2;">
+                            <strong>⚠️ Vendor Applications (12)</strong>
+                            <div style="margin-top: 15px;">
+                                <div style="padding: 10px; background: white; margin-bottom: 10px; border: 1px solid #ddd;">
+                                    <strong>Tech Store Pro</strong><br>
+                                    <small>Applied 2 days ago</small>
+                                    <div style="margin-top: 10px;">
+                                        <button class="wire-button primary" style="padding: 5px 15px;">Approve</button>
+                                        <button class="wire-button" style="padding: 5px 15px;">Reject</button>
+                                        <button class="wire-button" style="padding: 5px 15px;">View Details</button>
+                                    </div>
+                                </div>
+                                <div style="padding: 10px; background: white; margin-bottom: 10px; border: 1px solid #ddd;">
+                                    <strong>Fashion Boutique</strong><br>
+                                    <small>Applied 3 days ago</small>
+                                    <div style="margin-top: 10px;">
+                                        <button class="wire-button primary" style="padding: 5px 15px;">Approve</button>
+                                        <button class="wire-button" style="padding: 5px 15px;">Reject</button>
+                                        <button class="wire-button" style="padding: 5px 15px;">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="wire-button" style="width: 100%; margin-top: 10px;">View All Applications</button>
+                        </div>
+
+                        <div class="wire-box" style="background: #fef9f2;">
+                            <strong>🚨 Reported Content (5)</strong>
+                            <div style="margin-top: 15px;">
+                                <div style="padding: 10px; background: white; margin-bottom: 10px; border: 1px solid #ddd;">
+                                    <strong>Product: "Fake Designer Bag"</strong><br>
+                                    <small>Reported for copyright violation</small>
+                                    <div style="margin-top: 10px;">
+                                        <button class="wire-button" style="padding: 5px 15px;">Review</button>
+                                        <button class="wire-button" style="padding: 5px 15px;">Remove</button>
+                                    </div>
+                                </div>
+                                <div style="padding: 10px; background: white; margin-bottom: 10px; border: 1px solid #ddd;">
+                                    <strong>Review: Inappropriate content</strong><br>
+                                    <small>Spam/offensive language</small>
+                                    <div style="margin-top: 10px;">
+                                        <button class="wire-button" style="padding: 5px 15px;">Review</button>
+                                        <button class="wire-button" style="padding: 5px 15px;">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="wire-button" style="width: 100%; margin-top: 10px;">View All Reports</button>
+                        </div>
+                    </div>
+
+                    <h3 class="wire-section-title">Recent Activity</h3>
+                    <div class="wire-box">
+                        <table class="wire-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Event</th>
+                                    <th>User</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2 min ago</td>
+                                    <td>New User Registration</td>
+                                    <td>john.doe@email.com</td>
+                                    <td>Customer</td>
+                                </tr>
+                                <tr>
+                                    <td>15 min ago</td>
+                                    <td>Product Published</td>
+                                    <td>TechVendor Store</td>
+                                    <td>"Gaming Mouse"</td>
+                                </tr>
+                                <tr>
+                                    <td>1 hour ago</td>
+                                    <td>Order Placed</td>
+                                    <td>jane.smith@email.com</td>
+                                    <td>$149.99</td>
+                                </tr>
+                                <tr>
+                                    <td>2 hours ago</td>
+                                    <td>Vendor Approved</td>
+                                    <td>Fashion Store</td>
+                                    <td>Application accepted</td>
+                                </tr>
+                                <tr>
+                                    <td>3 hours ago</td>
+                                    <td>Review Posted</td>
+                                    <td>bob.johnson@email.com</td>
+                                    <td>5 stars</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional wireframes for other pages would follow similar patterns... -->
+        <!-- For brevity, I'm including stubs for the remaining pages -->
+
+        <div id="wire-vendor-profile" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Vendor Profile (Public View)</h2>
+                <p>Customer view of vendor store</p>
+            </div>
+            <div class="annotation">Similar structure to Homepage but filtered to single vendor's products with vendor info header</div>
+        </div>
+
+        <div id="wire-search-results" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Search Results</h2>
+                <p>Display search query results</p>
+            </div>
+            <div class="annotation">Same layout as Product Listing page but with search query displayed and "No results" state</div>
+        </div>
+
+        <div id="wire-login" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Login / Register</h2>
+                <p>Authentication pages</p>
+            </div>
+            <div class="annotation">Simple centered forms with email/password inputs, submit buttons, and links to forgot password/register</div>
+        </div>
+
+        <div id="wire-customer-dashboard" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Customer Dashboard</h2>
+                <p>Account overview with sidebar navigation</p>
+            </div>
+            <div class="annotation">Similar structure to Vendor Dashboard but with customer-specific metrics and navigation (Orders, Profile, Addresses, Wishlist)</div>
+        </div>
+
+        <div id="wire-order-history" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Order History</h2>
+                <p>List of customer orders</p>
+            </div>
+            <div class="annotation">Table with orders showing Order#, Date, Items, Total, Status with filters and search</div>
+        </div>
+
+        <div id="wire-order-detail" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Order Detail</h2>
+                <p>Single order view with tracking</p>
+            </div>
+            <div class="annotation">Order items list, shipping address, payment method, status timeline, tracking number, and action buttons</div>
+        </div>
+
+        <div id="wire-customer-profile" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Customer Profile Settings</h2>
+                <p>Edit personal information</p>
+            </div>
+            <div class="annotation">Form with name, email, phone, avatar upload, and change password section</div>
+        </div>
+
+        <div id="wire-addresses" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Saved Addresses</h2>
+                <p>Manage shipping addresses</p>
+            </div>
+            <div class="annotation">Grid of address cards with edit/delete buttons and "Add new address" button</div>
+        </div>
+
+        <div id="wire-wishlist" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Wishlist</h2>
+                <p>Saved products for later</p>
+            </div>
+            <div class="annotation">Product grid similar to Product Listing but with "Remove from wishlist" and "Move to cart" buttons</div>
+        </div>
+
+        <div id="wire-reviews" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>My Reviews</h2>
+                <p>Reviews written by customer</p>
+            </div>
+            <div class="annotation">List of reviews with product info, rating, comment, date, and edit/delete buttons</div>
+        </div>
+
+        <div id="wire-vendor-products" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Vendor Products Management</h2>
+                <p>List and manage all vendor products</p>
+            </div>
+            <div class="annotation">Table with products, filters, search, "Add new product" button, and action buttons (Edit, Delete, Publish/Unpublish)</div>
+        </div>
+
+        <div id="wire-vendor-orders" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Vendor Orders Management</h2>
+                <p>View and process vendor orders</p>
+            </div>
+            <div class="annotation">Orders table filtered to vendor's products only with status update dropdown and "Print packing slip" button</div>
+        </div>
+
+        <div id="wire-vendor-analytics" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Vendor Sales Analytics</h2>
+                <p>Charts and business metrics</p>
+            </div>
+            <div class="annotation">Revenue charts, top products table, sales by category pie chart, date range selector, and export button</div>
+        </div>
+
+        <div id="wire-vendor-profile-edit" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Vendor Business Profile</h2>
+                <p>Edit vendor information</p>
+            </div>
+            <div class="annotation">Form with business name, description, logo upload, banner upload, address, contact info, and social media links</div>
+        </div>
+
+        <div id="wire-admin-users" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Admin Users Management</h2>
+                <p>Manage all platform users</p>
+            </div>
+            <div class="annotation">Users table with filters (role, status), search, and actions (View, Edit, Suspend, Delete, Change Role)</div>
+        </div>
+
+        <div id="wire-admin-vendors" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Admin Vendors Management</h2>
+                <p>Approve and manage vendors</p>
+            </div>
+            <div class="annotation">Vendors table with approval status, application details modal, and approve/reject actions</div>
+        </div>
+
+        <div id="wire-admin-products" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Admin Products Overview</h2>
+                <p>View and moderate all products</p>
+            </div>
+            <div class="annotation">All products table across all vendors with edit/delete capabilities and "Feature on homepage" action</div>
+        </div>
+
+        <div id="wire-admin-orders" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Admin Orders Overview</h2>
+                <p>View all platform orders</p>
+            </div>
+            <div class="annotation">All orders table with filters, search, and admin override actions (refund, cancel)</div>
+        </div>
+
+        <div id="wire-admin-categories" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Admin Categories Management</h2>
+                <p>Create and edit product categories</p>
+            </div>
+            <div class="annotation">Categories list with add/edit/delete, parent category dropdown for subcategories, and reorder drag-and-drop</div>
+        </div>
+
+        <div id="wire-admin-settings" class="wireframe">
+            <button class="back-button" onclick="backToList()">← Back to List</button>
+            <div class="wireframe-header">
+                <h2>Admin Platform Settings</h2>
+                <p>System configuration</p>
+            </div>
+            <div class="annotation">Tabbed interface with General, Email, Payment, Shipping, Tax, and Security settings sections</div>
+        </div>
+
+    </div>
+
+    <script>
+        // Navigation functions
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active tab
+            document.querySelectorAll('.nav-tabs button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function showWireframe(wireId) {
+            // Hide all sections and wireframes
+            document.querySelectorAll('.page-section, .wireframe').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected wireframe
+            document.getElementById('wire-' + wireId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function backToList() {
+            // Hide all wireframes
+            document.querySelectorAll('.wireframe').forEach(wireframe => {
+                wireframe.classList.remove('active');
+            });
+            
+            // Show the last active section
+            const activeButton = document.querySelector('.nav-tabs button:not(:first-child)');
+            if (activeButton) {
+                const sectionId = activeButton.textContent.toLowerCase().includes('public') ? 'public' :
+                                 activeButton.textContent.toLowerCase().includes('customer') ? 'customer' :
+                                 activeButton.textContent.toLowerCase().includes('vendor') ? 'vendor' :
+                                 activeButton.textContent.toLowerCase().includes('admin') ? 'admin' : 'overview';
+                document.getElementById(sectionId).classList.add('active');
+            }
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

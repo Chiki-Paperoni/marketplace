@@ -8,7 +8,6 @@ DATABASE_URL="postgresql://user:password@host:5432/marketplace"
 
 # JWT
 JWT_SECRET="your-super-secret-jwt-key-change-in-production"
-JWT_EXPIRES_IN="7d"
 
 # Cloudinary
 CLOUDINARY_CLOUD_NAME="your-cloud-name"

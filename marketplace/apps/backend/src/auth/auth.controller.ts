@@ -1,14 +1,11 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto, RegisterDto } from './dto';
+import { Roles } from './decorators/roles.decorator';
+import { RolesGuard } from './guard/roles/roles.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import type { AuthenticatedRequest } from './types/authenticated-request.interface';
+import { Role } from '../generated/prisma/client';
 
 @Controller('auth')
 export class AuthController {
@@ -25,14 +22,10 @@ export class AuthController {
   }
 
   @Get('me')
-  @UseGuards(JwtAuthGuard)
-  me(@Request() req: { user: { id: string; email: string; firstName: string; lastName: string; role: string } }) {
-    return {
-      id: req.user.id,
-      email: req.user.email,
-      firstName: req.user.firstName,
-      lastName: req.user.lastName,
-      role: req.user.role,
-    };
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
+  me(@Req() req: AuthenticatedRequest) {
+    const { id, email, firstName, lastName, role } = req.user;
+    return { id, email, firstName, lastName, role };
   }
 }

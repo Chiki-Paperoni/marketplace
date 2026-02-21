@@ -1,12 +1,9 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
 import 'dotenv/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
+import metadata from './metadata';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,22 +16,25 @@ async function bootstrap() {
       transform: true,
     }),
   );
+
+  await SwaggerModule.loadPluginMetadata(metadata);
+
   const config = new DocumentBuilder()
-  .setTitle('Marketplace API')
-  .setDescription('Marketplace API description')
-  .setVersion('1.0')
-  .addTag('marketplace')
-  .addBearerAuth(
-    {
-      type: 'http',
-      scheme: 'bearer',
-      bearerFormat: 'JWT',
-      name: 'Authorization',
-      in: 'header',
-    },
-    'access-token',
-  )
-  .build();
+    .setTitle('Marketplace API')
+    .setDescription('Marketplace API description')
+    .setVersion('1.0')
+    .addTag('marketplace')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'Authorization',
+        in: 'header',
+      },
+      'access-token',
+    )
+    .build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
 

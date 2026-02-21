@@ -59,3 +59,6 @@ out
 # Prisma generated client (regenerate with: npx prisma generate)
 apps/backend/prisma/generated
 apps/backend/src/generated
+
+# NestJS Swagger plugin metadata (auto-generated)
+apps/backend/src/metadata.ts

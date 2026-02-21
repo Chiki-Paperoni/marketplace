@@ -9,7 +9,7 @@ class AuthUserDto {
 
 /**
  * Standard auth API response: user (no password) + JWT.
- * Using a class keeps response shape consistent and documents the response in Swagger.
+ * Using a class keeps response shape consistent.
  */
 export class AuthResponseDto {
   user!: AuthUserDto;

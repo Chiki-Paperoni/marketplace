@@ -1,7 +1,12 @@
 const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
 const { join } = require('path');
+const webpack = require('webpack');
 
 module.exports = {
+  externals: {
+    'swagger-ui-express': 'commonjs swagger-ui-express',
+    'swagger-ui-dist': 'commonjs swagger-ui-dist',
+  },
   output: {
     path: join(__dirname, 'dist'),
     clean: true,
@@ -10,6 +15,9 @@ module.exports = {
     }),
   },
   plugins: [
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^class-transformer\/storage$/,
+    }),
     new NxAppWebpackPlugin({
       target: 'node',
       compiler: 'tsc',

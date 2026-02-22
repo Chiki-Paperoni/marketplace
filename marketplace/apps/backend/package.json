@@ -5,6 +5,9 @@
   "nx": {
     "targets": {
       "build": {
+        "dependsOn": [
+          "generate-swagger-metadata"
+        ],
         "executor": "nx:run-commands",
         "options": {
           "command": "webpack-cli build",
@@ -54,6 +57,12 @@
           "copy-workspace-modules"
         ],
         "executor": "nx:noop"
+      },
+      "generate-swagger-metadata": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "pnpm exec tsx apps/backend/src/generate-metadata.ts"
+        }
       },
       "serve": {
         "continuous": true,

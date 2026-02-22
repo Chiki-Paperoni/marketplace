@@ -114,6 +114,29 @@
   - Filter by vendor
   - Sort by price, date, rating
 
+  **Step-by-step implementation (PROD-3):**
+
+  1. **Query DTO** (`query-products.dto.ts`)
+     - Add optional `minPrice`, `maxPrice` (number, ≥ 0) for price range.
+     - Add optional `sortBy`: `'price' | 'createdAt' | 'rating'`.
+     - Add optional `sortOrder`: `'asc' | 'desc'` (default `'desc'` for date/rating, client chooses for price).
+     - Keep existing: `search`, `categoryId`, `status`, `vendorId`, `page`, `limit`.
+
+  2. **Search (name + description)**
+     - In `findAll` `where`, when `search` is set: use OR of `name contains` and `description contains` (case-insensitive).
+
+  3. **Price range filter**
+     - In `findAll` `where`: if `minPrice` set, add `price: { gte: minPrice }`; if `maxPrice` set, add `price: { lte: maxPrice }` (combine in one `price` object).
+
+  4. **Sort**
+     - `sortBy === 'price'`: `orderBy: { price: sortOrder }`.
+     - `sortBy === 'createdAt'` (or default): `orderBy: { createdAt: sortOrder }`.
+     - `sortBy === 'rating'`: order by average of `Review.rating` per product. Implemented by fetching matching products with `include: { reviews: { select: { rating: true } } }` (capped at 500), computing average in memory, sorting, then applying pagination. For very large catalogs, consider a cached `averageRating` column or raw SQL.
+
+  5. **Optional**
+     - Add Swagger `@ApiQuery` on GET `/products` for all query params.
+     - Return `{ data, total, page, limit }` for list endpoint so the client can show total pages.
+
 - [ ] **PROD-4:** Add image upload
   - Integrate Cloudinary
   - POST /products/:id/images

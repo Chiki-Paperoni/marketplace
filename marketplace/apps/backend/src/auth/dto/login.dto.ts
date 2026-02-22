@@ -6,13 +6,13 @@ import { IsEmail, IsString, MinLength } from 'class-validator';
  */
 export class LoginDto {
   /**
-   * @example test@example.com
+   * @example admin@marketplace.demo
    */
   @IsEmail()
   email!: string;
 
   /**
-   * @example password
+   * @example Password123!
    */
   @IsString()
   @MinLength(1, { message: 'Password is required' })

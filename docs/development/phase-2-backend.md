@@ -142,6 +142,7 @@
   - POST /products/:id/images
   - DELETE /products/:id/images/:imageId
   - Set featured image
+  - **→ Full step-by-step guide:** [PROD-4 Image Upload Guide](./prod-4-image-upload-guide.md) (env setup, schema, validation, security, endpoints)
 
 **Acceptance Criteria:**
 
